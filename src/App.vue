@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="flex">
 			<h2 class="name">{{ name }}</h2>
-			<div class="central">
+			<div class="card">
 				<transition name="slide-fade">
 					<img
 						v-show="activeItem === 'home'"
@@ -230,7 +230,7 @@
 		align-items: center;
 	}
 
-	.central {
+	.card {
 		position: relative;
 		width: 500px;
 		height: 70vh;
@@ -243,7 +243,7 @@
 		box-shadow: -4px 3px 17px 0px rgba(32, 50, 50, 0.66);
 	}
 
-	.central img {
+	.card img {
 		/* min-width: 300px;
 		max-width: 600px;
 		min-height: 400px;
@@ -454,9 +454,9 @@
 	}
 
 	@media (max-width: 500px) {
-		.central {
+		.card {
 			width: 250px !important;
-			height: 60vh !important;
+			height: 50vh !important;
 		}
 
 		.navlink {
@@ -466,9 +466,9 @@
 	}
 
 	@media (max-width: 700px) {
-		.central {
+		.card {
 			width: 350px;
-			height: 70vh;
+			height: 60vh;
 		}
 
 		.mail {
