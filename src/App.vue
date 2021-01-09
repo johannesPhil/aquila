@@ -1,61 +1,67 @@
 <template>
 	<div class="container">
-		<h2 class="name">{{ name }}</h2>
-		<div class="central">
-			<transition name="slide-fade">
-				<img v-show="activeItem === 'home'" src="./assets/aquila.png" alt="" />
-			</transition>
-			<transition name="slide-fade">
-				<div v-show="activeItem === 'about'" class="about">
-					<div class="about-content">
-						<h2>About</h2>
-						<br />
-						<p>
-							A Fashion Model with 5 years’ experience in industrial projects,
-							successfully modeled for top brands and possesses the specific
-							attributes that many designers and fashion directors look for.
-						</p>
-					</div>
-				</div>
-			</transition>
-			<transition name="slide-fade">
-				<div v-show="activeItem === 'gallery'" class="gallery">
-					<transition-group name="fade" tag="div">
-						<div v-for="i in [currentIndex]" :key="i">
-							<img :src="currentImg" class="slider" />
+		<div class="flex">
+			<h2 class="name">{{ name }}</h2>
+			<div class="central">
+				<transition name="slide-fade">
+					<img
+						v-show="activeItem === 'home'"
+						src="./assets/aquila.png"
+						alt=""
+					/>
+				</transition>
+				<transition name="slide-fade">
+					<div v-show="activeItem === 'about'" class="about">
+						<div class="about-content">
+							<h2>About</h2>
+							<br />
+							<p>
+								A Fashion Model with 5 years’ experience in industrial projects,
+								successfully modeled for top brands and possesses the specific
+								attributes that many designers and fashion directors look for.
+							</p>
 						</div>
-					</transition-group>
-					<a class="prev" @click="prev" href="#">&#10094; Previous</a>
-					<a class="next" @click="next" href="#">&#10095; Next</a>
-				</div>
-			</transition>
-			<transition name="slide-fade">
-				<div v-show="activeItem === 'contact'" class="contact">
-					<img src="./assets/contact.jpg" alt="" />
-					<a :href="'mailto:' + email" class="mail">
-						Shoot a Mail
-					</a>
-				</div>
-			</transition>
-		</div>
-		<div class="navbar">
-			<ul>
-				<li class="navlink">
-					<a href="" @click.prevent="change('home')">HOME</a>
-				</li>
-				<li class="navlink">
-					<a href="" @click.prevent="change('about')">ABOUT</a>
-				</li>
-				<div class="avi">
-					<img src="./assets/avi.jpg" alt="" />
-				</div>
-				<li class="navlink">
-					<a href="" @click.prevent="change('gallery')">GALLERY</a>
-				</li>
-				<li class="navlink">
-					<a href="" @click.prevent="change('contact')">CONTACT</a>
-				</li>
-			</ul>
+					</div>
+				</transition>
+				<transition name="slide-fade">
+					<div v-show="activeItem === 'gallery'" class="gallery">
+						<transition-group name="fade" tag="div">
+							<div v-for="i in [currentIndex]" :key="i">
+								<img :src="currentImg" class="slider" />
+							</div>
+						</transition-group>
+						<a class="prev" @click="prev" href="#">&#10094; Previous</a>
+						<a class="next" @click="next" href="#">&#10095; Next</a>
+					</div>
+				</transition>
+				<transition name="slide-fade">
+					<div v-show="activeItem === 'contact'" class="contact">
+						<img src="./assets/contact.jpg" alt="" />
+						<a :href="'mailto:' + email" class="mail">
+							Shoot a Mail
+						</a>
+					</div>
+				</transition>
+			</div>
+			<div class="navbar">
+				<ul>
+					<li class="navlink">
+						<a href="" @click.prevent="change('home')">HOME</a>
+					</li>
+					<li class="navlink">
+						<a href="" @click.prevent="change('about')">ABOUT</a>
+					</li>
+					<div class="avi">
+						<img src="./assets/avi.jpg" alt="" />
+					</div>
+					<li class="navlink">
+						<a href="" @click.prevent="change('gallery')">GALLERY</a>
+					</li>
+					<li class="navlink">
+						<a href="" @click.prevent="change('contact')">CONTACT</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<div class="social">
 			<ul>
@@ -175,6 +181,8 @@
 	ul,
 	li {
 		padding-inline-start: 0;
+		margin-block-start: 0;
+		margin-block-end: 0;
 		list-style: none;
 	}
 
@@ -182,6 +190,10 @@
 		position: relative;
 		width: 100%;
 		min-height: 100vh;
+		display: flex;
+		flex-flow: row;
+		justify-content: center;
+		align-items: center;
 		padding: 2rem;
 		font-size: 20px;
 		background: #cb2964;
@@ -204,7 +216,6 @@
 	.name {
 		position: relative;
 		width: 100%;
-		height: 100%;
 		margin-left: 40px;
 		z-index: 2;
 		text-align: center;
@@ -212,11 +223,17 @@
 		letter-spacing: 15px;
 	}
 
+	.flex {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
 	.central {
 		position: relative;
-		min-width: 500px;
-		max-width: 700px;
-		height: 650px;
+		width: 500px;
+		height: 70vh;
 		margin: 1rem auto;
 		background: #cc2a66;
 		overflow: hidden;
@@ -224,6 +241,13 @@
 		-webkit-box-shadow: -4px 3px 17px 0px rgba(32, 50, 50, 0.66);
 		-moz-box-shadow: -4px 3px 17px 0px rgba(32, 50, 50, 0.66);
 		box-shadow: -4px 3px 17px 0px rgba(32, 50, 50, 0.66);
+	}
+
+	.central img {
+		/* min-width: 300px;
+		max-width: 600px;
+		min-height: 400px;
+		max-height: 650px; */
 	}
 
 	.about {
@@ -402,17 +426,19 @@
 	}
 
 	.avi {
-		width: 120px;
-		height: 120px;
+		width: 90px;
+		height: 90px;
+		/* max-width: 120px;
+		max-height: 120px; */
 		border-radius: 50%;
 		overflow: hidden;
 	}
 
 	.social {
-		position: absolute;
-		right: 2%;
-		top: 50%;
-		transform: translate(0, -50%);
+		position: relative;
+		justify-self: flex-end;
+		right: -25%;
+		z-index: 3;
 	}
 
 	.social__link {
@@ -425,5 +451,66 @@
 
 	.social__link:hover {
 		transform: scale(1.5);
+	}
+
+	@media (max-width: 500px) {
+		.central {
+			width: 250px !important;
+			height: 60vh !important;
+		}
+
+		.navlink {
+			font-size: 14px !important;
+			margin: 10px 5px !important;
+		}
+	}
+
+	@media (max-width: 700px) {
+		.central {
+			width: 350px;
+			height: 70vh;
+		}
+
+		.mail {
+			width: max-content;
+		}
+
+		.navbar ul {
+			margin-left: 0;
+		}
+
+		.navlink {
+			font-size: 16px;
+			margin: 10px;
+		}
+
+		.avi {
+			display: none;
+		}
+	}
+
+	@media (max-width: 900px) {
+		.container {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.social {
+			position: static;
+		}
+		.social ul {
+			display: flex;
+			flex-flow: row wrap;
+		}
+
+		.social__link {
+			margin: 10px;
+		}
+	}
+
+	@media (max-width: 1200px) {
+		.social {
+			right: -15%;
+		}
 	}
 </style>
