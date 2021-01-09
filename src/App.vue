@@ -25,13 +25,13 @@
 				</transition>
 				<transition name="slide-fade">
 					<div v-show="activeItem === 'gallery'" class="gallery">
-						<transition-group name="fade" tag="div">
+						<transition-group name="fade" tag="div" class="slider">
 							<div v-for="i in [currentIndex]" :key="i">
-								<img :src="currentImg" class="slider" />
+								<img :src="currentImg" />
 							</div>
 						</transition-group>
 						<a class="prev" @click="prev" href="#">&#10094; Previous</a>
-						<a class="next" @click="next" href="#">&#10095; Next</a>
+						<a class="next" @click="next" href="#">Next &#10095; </a>
 					</div>
 				</transition>
 				<transition name="slide-fade">
@@ -243,13 +243,6 @@
 		box-shadow: -4px 3px 17px 0px rgba(32, 50, 50, 0.66);
 	}
 
-	.card img {
-		/* min-width: 300px;
-		max-width: 600px;
-		min-height: 400px;
-		max-height: 650px; */
-	}
-
 	.about {
 		width: 100%;
 		height: 100%;
@@ -341,8 +334,8 @@
 		opacity: 0;
 	}
 
-	.slider {
-		height: 650px;
+	.slider img {
+		height: 100%;
 		width: 100%;
 	}
 
